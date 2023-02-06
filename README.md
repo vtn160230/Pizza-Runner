@@ -16,7 +16,7 @@ Danny wants to use the data to answer a few simple questions about his customers
 
 ## Entity Relationship Diagram
 
-![entitydg2](https://user-images.githubusercontent.com/122754787/216842806-1545ba7f-8155-4efa-b514-fca62c533464.png)
+![Capture](https://user-images.githubusercontent.com/122754787/217063607-37a496a9-4b12-4aee-b764-d3087d683f8a.PNG)
 
 ## Schema
 <details>

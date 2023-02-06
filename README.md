@@ -160,26 +160,51 @@ VALUES
 ## Solutions 
 ### Q1: How many pizzas were ordered?
 
+````sql
+SELECT COUNT(order_id) AS order_count FROM customer_orders
+````
 
 ***
 
 ### Q2: How many unique customer orders were made?
 
+````sql
+SELECT COUNT(DISTINCT order_id) AS unique_count FROM customer_orders 
+````
 
 ***
 
 ### Q3: How many successful orders were delivered by each runner?
 
+````sql
+SELECT runner_id, COUNT(order_id) AS successful_orders FROM runner_orders
+WHERE duration <> 'null'
+GROUP BY runner_id
+ORDER BY runner_id
+````
 
 ***
 
 ### Q4: How many of each type of pizza was delivered?
 
+````sql
+SELECT p.pizza_name, COUNT(c.pizza_id) AS pizza_count FROM customer_orders c
+JOIN pizza_names p ON c.pizza_id = p.pizza_id
+JOIN runner_orders r ON c.order_id = r.order_id
+WHERE r.distance <> 'null'
+GROUP BY p.pizza_name
+````
 
 ***
 
 ### Q5: How many Vegetarian and Meatlovers were ordered by each customer?
 
+````sql
+SELECT c.customer_id, p.pizza_name, COUNT(c.pizza_id) AS pizza_count FROM customer_orders c
+JOIN pizza_names p ON c.pizza_id = p.pizza_id
+GROUP BY c.customer_id, p.pizza_name
+ORDER BY c.customer_id
+````
 
 ***
 

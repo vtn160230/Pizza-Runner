@@ -210,16 +210,53 @@ ORDER BY c.customer_id
 
 ### Q6: What was the maximum number of pizzas delivered in a single order?
 
+````sql
+with t1 as (
+	SELECT c.order_id, COUNT(pizza_id) AS pizza_count FROM customer_orders c
+	JOIN runner_orders r ON c.order_id = r.order_id
+	WHERE duration <> 'null'
+	GROUP BY c.order_id
+	)
+	
+SELECT MAX(pizza_count) FROM t1;
+````
 
 ***
 
 ### Q7: For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
 
+````
+SELECT c.customer_id, 
+	SUM(
+	CASE WHEN c.exclusions <> ' ' OR c.extras <> ' ' THEN 1
+		ELSE 0
+		END) AS at_least_1_change,
+	SUM(
+		CASE WHEN c.exclusions = ' ' AND c.extras = ' ' THEN 1
+		ELSE 0
+		END) AS no_change
+FROM customer_orders_temp c 
+JOIN runner_orders_temp r ON c.order_id = r.order_id
+WHERE r.duration <> 0 
+GROUP BY c.customer_id
+ORDER BY c.customer_id
+````
 
 ***
 
 ### Q8: How many pizzas were delivered that had both exclusions and extras?
 
+````sql
+SELECT  
+  SUM(
+    CASE WHEN exclusions IS NOT NULL AND extras IS NOT NULL THEN 1
+    ELSE 0
+    END) AS pizza_count_w_exclusions_extras
+FROM customer_orders c
+JOIN runner_orders r ON c.order_id = r.order_id
+WHERE r.distance >= 1 
+  AND exclusions <> ' ' AND extras <> ' ';
+````
 
 ***
 

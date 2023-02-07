@@ -248,14 +248,14 @@ ORDER BY c.customer_id
 
 ````sql
 SELECT  
-  SUM(
-    CASE WHEN exclusions IS NOT NULL AND extras IS NOT NULL THEN 1
-    ELSE 0
-    END) AS pizza_count_w_exclusions_extras
+  SELECT  
+  	SUM(
+    	CASE WHEN exclusions IS NOT NULL AND extras IS NOT NULL THEN 1
+    	ELSE 0
+    	END) AS pizza_count_w_exclusions_extras
 FROM customer_orders c
 JOIN runner_orders r ON c.order_id = r.order_id
-WHERE r.distance >= 1 
-  AND exclusions <> ' ' AND extras <> ' ';
+WHERE r.distance >= 1 AND exclusions <> ' ' AND extras <> ' ';
 ````
 
 ***

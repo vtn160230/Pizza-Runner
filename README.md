@@ -225,7 +225,7 @@ SELECT MAX(pizza_count) FROM t1;
 
 ### Q7: For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
 
-````
+````sql
 SELECT c.customer_id, 
 	SUM(
 	CASE WHEN c.exclusions <> ' ' OR c.extras <> ' ' THEN 1

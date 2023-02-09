@@ -5,7 +5,7 @@ Week 2 of the 8 Week SQL Challenge - Pizza Runner
 - [Business Task](#Business-Task)
 - [Entity Relationship Diagram](#Entity-Relationship-Diagram)
 - [Schema](#Schema)
-- [Data Cleaning and Transformation](#Data Cleaning and Transformation)
+- [Data Cleaning and Transformation](#Data-Cleaning-and-Transformation)
 - [Case Study Questions](#Case-Study-Questions)
 - [Solutions](#Solutions)
 

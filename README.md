@@ -251,14 +251,13 @@ ORDER BY c.customer_id
 
 ### Q8: How many pizzas were delivered that had both exclusions and extras?
 
-````sql
+````sql 
 SELECT  
-  SELECT  
   	SUM(
     	CASE WHEN exclusions IS NOT NULL AND extras IS NOT NULL THEN 1
     	ELSE 0
     	END) AS pizza_count_w_exclusions_extras
-FROM customer_orders c
+FROM customer_orders_temp c
 JOIN runner_orders r ON c.order_id = r.order_id
 WHERE r.distance >= 1 AND exclusions <> ' ' AND extras <> ' ';
 ````
@@ -267,7 +266,20 @@ WHERE r.distance >= 1 AND exclusions <> ' ' AND extras <> ' ';
 
 ### Q9: What was the total volume of pizzas ordered for each hour of the day?
 
+````sql
+SELECT EXTRACT(HOUR FROM order_time) AS order_hour, COUNT(*) AS total_orders
+FROM customer_orders_temp
+GROUP BY EXTRACT(HOUR FROM order_time)
+ORDER BY order_hour ASC;
+````
 
 ***
 
 ### Q10: What was the volume of orders for each day of the week?
+
+````sql
+SELECT TO_CHAR(order_time, 'DAY') AS order_day, COUNT(*) AS total_orders
+FROM customer_orders_temp
+GROUP BY TO_CHAR(order_time, 'DAY')
+ORDER BY total_orders DESC;
+````

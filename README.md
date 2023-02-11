@@ -215,6 +215,8 @@ GROUP BY c.customer_id, p.pizza_name
 ORDER BY c.customer_id
 ````
 
+![6PPjjcX](https://user-images.githubusercontent.com/122754787/218241135-9f2c1931-7bbc-46d2-aac4-d381014fa8eb.png)
+
 ***
 
 ### Q6: What was the maximum number of pizzas delivered in a single order?

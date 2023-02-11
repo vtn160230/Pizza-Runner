@@ -281,6 +281,8 @@ GROUP BY EXTRACT(HOUR FROM order_time)
 ORDER BY order_hour ASC;
 ````
 
+![YwwdLhI](https://user-images.githubusercontent.com/122754787/218241199-5b6ccf2a-8c55-4edd-b92d-3c8e1e2982a9.png)
+
 ***
 
 ### Q10: What was the volume of orders for each day of the week?

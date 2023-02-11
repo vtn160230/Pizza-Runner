@@ -177,6 +177,7 @@ SELECT COUNT(order_id) AS order_count FROM customer_orders
 ````sql
 SELECT COUNT(DISTINCT order_id) AS unique_count FROM customer_orders 
 ````
+![EpKmcBr](https://user-images.githubusercontent.com/122754787/218241094-1ac09382-7099-4548-b6c7-2af043b543ef.png)
 
 ***
 
@@ -188,6 +189,7 @@ WHERE duration <> 'null'
 GROUP BY runner_id
 ORDER BY runner_id
 ````
+![aiHXRsP](https://user-images.githubusercontent.com/122754787/218241109-277efdfd-9aea-473f-9541-4c8b2ec43d3c.png)
 
 ***
 
@@ -200,6 +202,7 @@ JOIN runner_orders r ON c.order_id = r.order_id
 WHERE r.distance <> 'null'
 GROUP BY p.pizza_name
 ````
+![WucDAoz](https://user-images.githubusercontent.com/122754787/218241117-19780fff-542a-4524-b19f-2b28371e294f.png)
 
 ***
 

@@ -232,6 +232,8 @@ with t1 as (
 SELECT MAX(pizza_count) FROM t1;
 ````
 
+![mmoFFAO](https://user-images.githubusercontent.com/122754787/218241163-d7abf1cc-6b32-4efb-923e-f67c728f2daf.png)
+
 ***
 
 ### Q7: For each customer, how many delivered pizzas had at least 1 change and how many had no changes?

@@ -168,6 +168,7 @@ VALUES
 ````sql
 SELECT COUNT(order_id) AS order_count FROM customer_orders
 ````
+![uixR75m](https://user-images.githubusercontent.com/122754787/218241077-d7f10f40-12b6-4e5c-968c-8482107ef25c.png)
 
 ***
 

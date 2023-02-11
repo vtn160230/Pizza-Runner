@@ -241,34 +241,34 @@ SELECT MAX(pizza_count) FROM t1;
 ````sql
 SELECT c.customer_id, 
 	SUM(
-	CASE WHEN c.exclusions <> ' ' OR c.extras <> ' ' THEN 1
+	CASE WHEN c.exclusions <> '%null%' OR c.extras <> '%null%' THEN 1
 		ELSE 0
 		END) AS at_least_1_change,
 	SUM(
-		CASE WHEN c.exclusions = ' ' AND c.extras = ' ' THEN 1
+		CASE WHEN c.exclusions IS NULL AND c.extras IS NULL THEN 1
 		ELSE 0
 		END) AS no_change
 FROM customer_orders_temp c 
 JOIN runner_orders_temp r ON c.order_id = r.order_id
-WHERE r.duration <> 0 
+WHERE r.duration != 0
 GROUP BY c.customer_id
 ORDER BY c.customer_id
 ````
+
+![wcPZUh9](https://user-images.githubusercontent.com/122754787/218242940-20477a36-68f8-4412-b118-e2b0323bb546.png)
 
 ***
 
 ### Q8: How many pizzas were delivered that had both exclusions and extras?
 
 ````sql 
-SELECT  
-  	SUM(
-    	CASE WHEN exclusions IS NOT NULL AND extras IS NOT NULL THEN 1
-    	ELSE 0
-    	END) AS pizza_count_w_exclusions_extras
+SELECT COUNT(*) AS pizza_with_exclusions_and_extras
 FROM customer_orders_temp c
-JOIN runner_orders r ON c.order_id = r.order_id
-WHERE r.distance >= 1 AND exclusions <> ' ' AND extras <> ' ';
+JOIN runner_orders_temp r ON c.order_id = r.order_id AND r.distance IS NOT NULL
+WHERE c.exclusions IS NOT NULL AND c.extras IS NOT NULL
 ````
+
+![Gq7XFnk](https://user-images.githubusercontent.com/122754787/218243073-6b8283df-2c99-4329-943c-e53185fbdeb5.png)
 
 ***
 

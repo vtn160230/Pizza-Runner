@@ -293,3 +293,5 @@ FROM customer_orders_temp
 GROUP BY TO_CHAR(order_time, 'DAY')
 ORDER BY total_orders DESC;
 ````
+
+![i6WJ2jM](https://user-images.githubusercontent.com/122754787/218241219-fd53a59d-12c6-41d3-bcf3-9e0a0ac1bb67.png)

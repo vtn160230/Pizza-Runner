@@ -146,6 +146,40 @@ VALUES
 
 ## Data Cleaning and Transformation
 
+````sql
+CREATE TEMP TABLE customer_orders_temp AS
+SELECT
+  order_id,
+  customer_id,
+  pizza_id,
+  CASE WHEN exclusions = 'null' or exclusions = '' THEN NULL ELSE exclusions END,
+  CASE WHEN extras = 'null' or extras = '' THEN NULL ELSE extras END,
+  (order_time + INTERVAL '1 year') AS order_time
+FROM customer_orders;
+````
+
+````sql
+CREATE TEMP TABLE runner_orders_temp AS
+SELECT
+  order_id,
+  runner_id,
+  CAST(CASE WHEN pickup_time = 'null' THEN NULL ELSE pickup_time END AS TIMESTAMP) + INTERVAL '1 year' AS pickup_time,
+  CAST (
+    CASE
+	  WHEN distance = 'null' THEN NULL
+	  WHEN distance LIKE '%km' THEN TRIM(distance, 'km') ELSE distance
+    END AS FLOAT),
+  CAST(
+	CASE
+	  WHEN duration = 'null' THEN NULL
+	  WHEN duration LIKE '%mins' THEN TRIM(duration, 'mins')
+	  WHEN duration LIKE '%minute' THEN TRIM(duration, 'minute')
+	  WHEN duration LIKE '%minutes' THEN TRIM(duration, 'minutes') ELSE duration
+    END AS FLOAT),
+  CASE WHEN cancellation = 'null' or cancellation = '' THEN NULL ELSE cancellation END
+FROM runner_orders;
+````
+
 ***
 
 ## Case Study Questions

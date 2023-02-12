@@ -148,10 +148,7 @@ VALUES
 
 ````sql
 CREATE TEMP TABLE customer_orders_temp AS
-SELECT
-  order_id,
-  customer_id,
-  pizza_id,
+SELECT order_id, customer_id, pizza_id,
   CASE WHEN exclusions = 'null' or exclusions = '' THEN NULL ELSE exclusions END,
   CASE WHEN extras = 'null' or extras = '' THEN NULL ELSE extras END,
   (order_time + INTERVAL '1 year') AS order_time
@@ -160,9 +157,7 @@ FROM customer_orders;
 
 ````sql
 CREATE TEMP TABLE runner_orders_temp AS
-SELECT
-  order_id,
-  runner_id,
+SELECT order_id, runner_id,
   CAST(CASE WHEN pickup_time = 'null' THEN NULL ELSE pickup_time END AS TIMESTAMP) + INTERVAL '1 year' AS pickup_time,
   CAST (
     CASE

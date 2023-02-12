@@ -234,7 +234,7 @@ FROM runner_orders;
 ## Solutions
 
 <details>
-<summary> A. Pizza Metric Solution </summary
+	<summary> A. Pizza Metric Solution </summary> </br>
 
 ### Q1: How many pizzas were ordered?
 

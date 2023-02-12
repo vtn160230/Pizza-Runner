@@ -183,6 +183,8 @@ FROM runner_orders;
 ***
 
 ## Case Study Questions
+  <details>
+  <summary> A. Pizza Metric Questions </summary>
   
 - How many pizzas were ordered?
 - How many unique customer orders were made?
@@ -195,8 +197,13 @@ FROM runner_orders;
 - What was the total volume of pizzas ordered for each hour of the day?
 - What was the volume of orders for each day of the week?
 
+</details>
 
-## Solutions 
+## Solutions
+
+<details>
+<summary> A. Pizza Metric Solution </summary
+
 ### Q1: How many pizzas were ordered?
 
 ````sql
@@ -329,3 +336,5 @@ ORDER BY total_orders DESC;
 ````
 
 ![i6WJ2jM](https://user-images.githubusercontent.com/122754787/218241219-fd53a59d-12c6-41d3-bcf3-9e0a0ac1bb67.png)
+
+</details>

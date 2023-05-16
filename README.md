@@ -1,5 +1,5 @@
 # Pizza-Runner (Work In Progress)
-Week 2 of the 8 Week SQL Challenge - Pizza Runner
+SQL Challenge - Pizza Runner
 
 ##  Table of Contents
 - [Business Task](#Business-Task)
